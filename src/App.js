@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Container from './containers/Container'; 
+import {getVehicleByReg} from './Api';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    car: {
+      registration: "",
+      make: "",
+      model: "",
+      yearOfManufacture: 2019
+    },
+
+    submitted: false
+  }
+
+changeReg = event => {
+  let car = this.state.car
+  car.registration = event.target.value
+  this.setState({car})
+}
+
+getVehicleFromReg = event => {
+  
+  event.preventDefault();
+  const submitted = !this.state.submitted
+  this.setState({submitted})
+  const registration = this.state.car.registration;
+
+  getVehicleByReg(registration, response => {
+      
+      this.setState({ car: response })
+      let car = this.state.car
+      car.registration = registration
+      this.setState({ car })
+  })  
+  
+  console.log(this.state.car)
+}
+
+  render() {
+    return (
+      <div className="App">
+        <Container 
+          car={this.state.car}
+          updateReg={this.changeReg}
+          findByReg={this.getVehicleFromReg}
+          submitted={this.state.submitted}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
