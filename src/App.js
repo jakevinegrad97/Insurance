@@ -10,10 +10,10 @@ class App extends Component {
       registration: "",
       make: "",
       model: "",
-      yearOfManufacture: 2019
+      yearOfManufacture: 2019,
+      value: 0,
+      numberOfSeats: 0
     },
-
-    submitted: false
   }
 
 changeReg = event => {
@@ -22,11 +22,21 @@ changeReg = event => {
   this.setState({car})
 }
 
+changeValue = event => {
+  let car = this.state.car
+  car.value = event.target.value
+  this.setState({car})
+}
+
+changeSeats = event => {
+  let car = this.state.car
+  car.numberOfSeats = event.target.value
+  this.setState({car})
+}
+
 getVehicleFromReg = event => {
   
   event.preventDefault();
-  const submitted = !this.state.submitted
-  this.setState({submitted})
   const registration = this.state.car.registration;
 
   getVehicleByReg(registration, response => {
@@ -36,8 +46,11 @@ getVehicleFromReg = event => {
       car.registration = registration
       this.setState({ car })
   })  
-  
-  console.log(this.state.car)
+}
+
+submitCarDetails = event => {
+  event.preventDefault()
+  alert("Car Submitted")
 }
 
   render() {
@@ -48,6 +61,9 @@ getVehicleFromReg = event => {
           updateReg={this.changeReg}
           findByReg={this.getVehicleFromReg}
           submitted={this.state.submitted}
+          carValue={this.changeValue}
+          changeSeats={this.changeSeats}
+          submitCarDetails={this.submitCarDetails}
         />
       </div>
     );

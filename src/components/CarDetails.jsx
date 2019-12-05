@@ -11,6 +11,8 @@ class CarDetails extends Component {
                         <li>{car.make}</li>
                         <li>{car.model}</li>
                         <li>{car.yearOfManufacture}</li>
+                        {car.value > 0 && <><li>£{car.value}</li></>}
+                        {car.numberOfSeats > 0 && <><li>{car.numberOfSeats}</li></>}
                     </ul>
                 </>}
                 {car.make === "" && submitted && <> Fetching Details </>}

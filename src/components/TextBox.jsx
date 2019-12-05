@@ -2,14 +2,11 @@ import React, {Component} from 'react';
 
 class TextBox extends Component {
     render() {
-        const {title, doChange, doSubmit} = this.props;
+        const {title, doChange, type, name} = this.props;
         return(
-            <div className="form">
+            <div>
                 <div className="formText">{title}</div>
-                <form onSubmit={doSubmit}>
-                    <input className="formBox" type="text" onChange={doChange} maxLength="8"/>
-                    <input type="submit" value="Search"/>
-                </form>
+                <input className="formBox" type={type} onChange={doChange} maxLength="8" name={name}/>
             </div>
         )
     }

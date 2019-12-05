@@ -1,4 +1,4 @@
-const API = 'https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount';
+const API = 'https://dvlasearch.appspot.com/DvlaSearch?apikey=DvlaSearchDemoAccount'
 
 export const getVehicleByReg = (reg, callback) => {
     reg="mt09nks"
@@ -7,5 +7,4 @@ export const getVehicleByReg = (reg, callback) => {
     fetch(url)
         .then(res => res.json())
         .then(callback)
-        console.log(callback.make)
 }
