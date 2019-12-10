@@ -1,19 +1,35 @@
 html, body { height: 100%; width: 100%; margin: 0; }
 
-.form{
+.carDetails {
+	margin-top: 5%;
+	margin-left: 35%;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 1.5em;
+}
+
+.centreButton {
+	margin: 5% 42% 0 42%;
+}
+
+.centreButtonSubmit {
+	margin: 10% 0 0 30%;
+}
+
+.form {
   margin: 0 35%;
   padding: 5%;
 }
 
 .formText {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 1.5em;
+  font-size: 1.4em;
   width: 100%;
   margin-bottom: 5%;
 }
 
 .formBox {
   padding: 2%;
+  min-width: 100%;
 }
 
 .box4 {

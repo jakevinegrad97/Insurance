@@ -1,49 +1,22 @@
 import React, {Component} from 'react';
-import TextBox from '../components/TextBox';
 import CarDetails from '../components/CarDetails';
+import RegistrationForm from '../forms/RegistrationForm';
+import CarDetailsForm from '../forms/CarDetailsForm';
 
 class Container extends Component {
     render() {
-        const {car, updateReg, findByReg, carValue, submitCarDetails, changeSeats} = this.props
+        const {car, updateReg, findByReg, carValue, submitCarDetails, changeSeats, handDrive, regSubmitted, resubmitReg} = this.props
         return (
             <div className="container">
-                <div className="form">
-                    <form onSubmit={findByReg}>
-                        <TextBox 
-                            title="Enter Registration" 
-                            type="text"
-                            car={car}
-                            doChange={updateReg}
-                            name="Reg"
-                        />
-                        <input type="submit" value="Search"/>
-                    </form>
-                </div>
-                <CarDetails
-                    car={car}
-                />
-                
-                {car.model !== "" && <>
-                <hr />
-                <div className="form">
-                    <form onSubmit={submitCarDetails}>
-                        <TextBox
-                            title="Car Value"
-                            type="number"
-                            car={car}
-                            doChange={carValue}
-                            name="Value"
-                        />
-                        <TextBox
-                            title="Number of Seats"
-                            type="number"
-                            car={car}
-                            doChange={changeSeats}
-                            name="Seats"
-                        />
-                        <input type="submit" value="Submit"/>
-                    </form>
-                </div>
+                {!regSubmitted && <> 
+                    <RegistrationForm car={car} updateReg={updateReg} findByReg={findByReg}/>
+                </>}
+                {regSubmitted && <>
+                    <button className="btn-sm btn-danger centreButton" onClick={resubmitReg}>Different Registration</button>
+                    <CarDetails
+                        car={car}
+                    />
+                    <CarDetailsForm submitCarDetails={submitCarDetails} carValue={carValue} changeSeats={changeSeats} handDrive={handDrive} />
                 </>}
             </div>
         )
