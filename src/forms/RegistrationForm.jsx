@@ -6,8 +6,6 @@ const RegistrationForm = ({car, findByReg, updateReg}) => (
         <form onSubmit={findByReg}>
             <TextBox 
                 title="Enter Registration" 
-                type="text"
-                car={car}
                 doChange={updateReg}
                 name="Reg"
                 maxLength="8"

@@ -4,7 +4,7 @@ import Select from '../components/Select';
 
 class CarDetailsForm extends Component {
     render() {
-        const {submitCarDetails, carValue, changeSeats, handDrive} = this.props
+        const {submitCarDetails, carValue, changeSeats, handDrive, car} = this.props
         const drives = ["", "Left Hand Drive", "Right Hand Drive"]
         return(
             <div className="form">
@@ -16,6 +16,7 @@ class CarDetailsForm extends Component {
                         name="Value"
                         min="0"
                         max="10000000"
+                        value={car.value}
                     />
                     <NumberBox
                         title="Number of Seats"
@@ -24,8 +25,9 @@ class CarDetailsForm extends Component {
                         name="Seats"
                         min="0"
                         max="9"
+                        value={car.numberOfSeats}
                     />
-                    <Select title="What hand drive is it?" options={drives} onChange={handDrive}/>
+                    <Select title="What hand drive is it?" options={drives} onChange={handDrive} value={car.handDrive}/>
                     <input className="btn-md btn-success centreButtonSubmit" type="submit" value="Submit"/>
                 </form>
             </div>
